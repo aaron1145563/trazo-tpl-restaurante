@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Nombre del Restaurante — Comida y Cafetería</title>
+<meta name="description" content="Los mejores platillos y bebidas. Ven a disfrutar con familia y amigos. Pedidos para llevar por WhatsApp."/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--brand:#dc2626;--brand-dark:#b91c1c;--dark:#1c1917;--light:#fafaf9;--gray:#78716c;--warm:#fef3c7;--radius:16px}
+body{font-family:'Inter',sans-serif;color:var(--dark);background:var(--light)}
+a{text-decoration:none;color:inherit}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(28,25,23,.95);backdrop-filter:blur(10px);padding:16px 24px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:20px;font-weight:800;color:#fff}.logo span{color:var(--brand)}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{color:#ccc;font-size:13px;font-weight:600;transition:color .2s}.nav-links a:hover{color:#fff}
+.nav-cta{background:var(--brand);color:#fff!important;padding:10px 20px;border-radius:50px;font-size:13px}
+@media(max-width:768px){.nav-links a:not(.nav-cta){display:none}}
+
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;background:linear-gradient(135deg,var(--dark) 0%,#292524 100%);color:#fff;position:relative}
+.hero::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:var(--brand);opacity:.06;bottom:-200px;left:-100px}
+.hero h1{font-size:clamp(36px,7vw,64px);font-weight:800;line-height:1.1;margin-bottom:20px;letter-spacing:-1px}
+.hero h1 span{color:var(--brand)}
+.hero p{font-size:18px;color:#a8a29e;max-width:500px;margin:0 auto 32px}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{padding:14px 32px;border-radius:50px;font-size:15px;font-weight:700;border:none;cursor:pointer;display:inline-block;transition:all .2s}
+.btn-primary{background:var(--brand);color:#fff}.btn-primary:hover{background:var(--brand-dark);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.3)}.btn-outline:hover{border-color:var(--brand);color:var(--brand)}
+
+.section{padding:80px 24px;max-width:1100px;margin:0 auto}
+.section-tag{font-size:12px;font-weight:700;color:var(--brand);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px}
+.section-title{font-size:clamp(28px,4vw,42px);font-weight:800;letter-spacing:-1px;margin-bottom:40px}
+
+/* MENÚ */
+.menu-cats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px}
+.menu-cat{padding:10px 20px;border-radius:50px;font-size:13px;font-weight:700;border:2px solid #e7e5e4;background:#fff;cursor:pointer;transition:all .2s}
+.menu-cat.on,.menu-cat:hover{background:var(--brand);color:#fff;border-color:var(--brand)}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.menu-item{background:#fff;border-radius:var(--radius);padding:24px;border:1px solid #e7e5e4;display:flex;gap:16px;align-items:center;transition:all .3s}
+.menu-item:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.menu-img{width:80px;height:80px;border-radius:12px;background:#e7e5e4;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:32px}
+.menu-info h3{font-size:16px;font-weight:700;margin-bottom:4px}
+.menu-info p{font-size:13px;color:var(--gray);line-height:1.5}
+.menu-price{font-size:18px;font-weight:800;color:var(--brand);margin-top:6px}
+
+/* ESPECIAL */
+.special{background:var(--warm);padding:80px 24px}
+.special-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.special-img{aspect-ratio:4/3;border-radius:var(--radius);background:#fde68a;display:flex;align-items:center;justify-content:center;font-size:80px}
+@media(max-width:768px){.special-inner{grid-template-columns:1fr}}
+
+.schedule{background:var(--dark);color:#fff;padding:80px 24px}
+.schedule-inner{max-width:800px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.schedule-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:15px}
+.schedule-row span:last-child{color:var(--brand);font-weight:600}
+@media(max-width:768px){.schedule-inner{grid-template-columns:1fr}}
+
+.location{padding:80px 24px;background:#fff}
+.location-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.map-placeholder{aspect-ratio:16/10;border-radius:var(--radius);background:#e7e5e4;display:flex;align-items:center;justify-content:center;color:var(--gray);font-size:14px}
+@media(max-width:768px){.location-inner{grid-template-columns:1fr}}
+
+.wa-float{position:fixed;bottom:24px;right:24px;z-index:99;background:#25d366;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.2);transition:transform .2s}
+.wa-float:hover{transform:scale(1.1)}.wa-float svg{width:32px;height:32px;fill:#fff}
+footer{background:var(--dark);color:#a8a29e;text-align:center;padding:32px 24px;font-size:12px}
+footer a{color:var(--brand)}
+.reveal{opacity:0;transform:translateY(30px);transition:all .6s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><span>🍽</span> Nombre del Restaurante</div>
+  <div class="nav-links">
+    <a href="#menu">Menú</a>
+    <a href="#horario">Horario</a>
+    <a href="#ubicacion">Ubicación</a>
+    <a href="#contacto" class="nav-cta">Pedir para llevar</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div>
+    <h1>Sabor que se <span>siente</span><br/>en cada bocado</h1>
+    <p>Los mejores platillos preparados con ingredientes frescos. Para comer aquí o para llevar.</p>
+    <div class="hero-btns">
+      <a href="https://wa.me/521234567890?text=Hola,%20quiero%20hacer%20un%20pedido" class="btn btn-primary">Pedir por WhatsApp</a>
+      <a href="#menu" class="btn btn-outline">Ver menú</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="menu">
+  <div class="section-tag">Nuestro menú</div>
+  <h2 class="section-title">¿Qué se te antoja hoy?</h2>
+  <div class="menu-cats">
+    <button class="menu-cat on">Todo</button>
+    <button class="menu-cat">Desayunos</button>
+    <button class="menu-cat">Comidas</button>
+    <button class="menu-cat">Bebidas</button>
+    <button class="menu-cat">Postres</button>
+  </div>
+  <div class="menu-grid">
+    <div class="menu-item reveal"><div class="menu-img">🥞</div><div class="menu-info"><h3>Hotcakes con fruta</h3><p>3 hotcakes esponjosos con fruta de temporada, miel y mantequilla</p><div class="menu-price">$89</div></div></div>
+    <div class="menu-item reveal"><div class="menu-img">🌮</div><div class="menu-info"><h3>Tacos de bistec</h3><p>Orden de 4 tacos con bistec, cebolla, cilantro, salsa verde o roja</p><div class="menu-price">$95</div></div></div>
+    <div class="menu-item reveal"><div class="menu-img">🍔</div><div class="menu-info"><h3>Hamburguesa clásica</h3><p>Carne de res 180g, queso americano, lechuga, tomate, papas fritas</p><div class="menu-price">$120</div></div></div>
+    <div class="menu-item reveal"><div class="menu-img">🥗</div><div class="menu-info"><h3>Ensalada César</h3><p>Lechuga romana, pollo a la plancha, crutones, parmesano, aderezo</p><div class="menu-price">$105</div></div></div>
+    <div class="menu-item reveal"><div class="menu-img">☕</div><div class="menu-info"><h3>Café americano</h3><p>Café de grano 100% mexicano, caliente o frío</p><div class="menu-price">$35</div></div></div>
+    <div class="menu-item reveal"><div class="menu-img">🍰</div><div class="menu-info"><h3>Pastel del día</h3><p>Rebanada de pastel casero. Pregunta por el sabor del día</p><div class="menu-price">$65</div></div></div>
+  </div>
+</section>
+
+<section class="special">
+  <div class="special-inner">
+    <div>
+      <div class="section-tag">Especial de la casa</div>
+      <h2 class="section-title">Comida corrida</h2>
+      <p style="color:var(--gray);line-height:1.8;margin-bottom:16px">Incluye sopa del día, plato fuerte, arroz, frijoles, tortillas, agua del día y postre. ¡Todo casero!</p>
+      <div style="font-size:36px;font-weight:800;color:var(--brand);margin-bottom:20px">$85</div>
+      <a href="https://wa.me/521234567890?text=Hola,%20quiero%20la%20comida%20corrida" class="btn btn-primary">Pedir ahora</a>
+    </div>
+    <div class="special-img">🍲</div>
+  </div>
+</section>
+
+<section class="schedule" id="horario">
+  <div class="schedule-inner">
+    <div>
+      <div class="section-tag" style="color:var(--brand)">Horario</div>
+      <h2 class="section-title" style="color:#fff">Te esperamos</h2>
+      <p style="color:#a8a29e">Servicio en restaurante y para llevar. Pedidos por WhatsApp.</p>
+    </div>
+    <div>
+      <div class="schedule-row"><span>Lunes a Viernes</span><span>8:00 – 21:00</span></div>
+      <div class="schedule-row"><span>Sábado</span><span>8:00 – 22:00</span></div>
+      <div class="schedule-row"><span>Domingo</span><span>9:00 – 17:00</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="location" id="ubicacion">
+  <div class="location-inner">
+    <div>
+      <div class="section-tag">Visítanos</div>
+      <h2 class="section-title">Ubicación</h2>
+      <p style="color:var(--gray);line-height:1.8;margin-bottom:20px">
+        📍 Calle Ejemplo #789, Col. Centro<br>Ciudad, Estado, CP 01234<br><br>
+        📞 55 1234 5678<br>📧 contacto@ejemplo.com
+      </p>
+      <a href="https://wa.me/521234567890?text=Hola,%20quiero%20hacer%20una%20reservación" class="btn btn-primary" id="contacto">Reservar mesa</a>
+    </div>
+    <div class="map-placeholder">📍 Mapa de Google aquí</div>
+  </div>
+</section>
+
+<a class="wa-float" href="https://wa.me/521234567890" target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 2a10 10 0 00-8.493 15.262L2 22l4.875-1.476A10 10 0 1012 2z"/></svg>
+</a>
+
+<footer>
+  <p>© 2026 Nombre del Restaurante · Todos los derechos reservados</p>
+  <p style="margin-top:8px">Sitio web por <a href="https://aaron1145563.github.io/trazo-web-landing/" target="_blank">Trazo Web Studio</a></p>
+</footer>
+
+<script>
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
