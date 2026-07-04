@@ -71,7 +71,7 @@ footer a{color:var(--brand)}
 <body>
 
 <nav>
-  <div class="logo"><span>🍽</span> Nombre del Restaurante</div>
+  <div class="logo"><span>🍽</span> <span data-f="business_name">Nombre del Restaurante</span></div>
   <div class="nav-links">
     <a href="#menu">Menú</a>
     <a href="#horario">Horario</a>
@@ -82,10 +82,10 @@ footer a{color:var(--brand)}
 
 <section class="hero">
   <div>
-    <h1>Sabor que se <span>siente</span><br/>en cada bocado</h1>
-    <p>Los mejores platillos preparados con ingredientes frescos. Para comer aquí o para llevar.</p>
+    <h1 data-f-html="hero_title_html">Sabor que se <span>siente</span><br/>en cada bocado</h1>
+    <p data-f="hero_subtitle">Los mejores platillos preparados con ingredientes frescos. Para comer aquí o para llevar.</p>
     <div class="hero-btns">
-      <a href="https://wa.me/521234567890?text=Hola,%20quiero%20hacer%20un%20pedido" class="btn btn-primary">Pedir por WhatsApp</a>
+      <a href="https://wa.me/521234567890?text=Hola,%20quiero%20hacer%20un%20pedido" class="btn btn-primary wa-link" data-wa-msg="Hola, quiero hacer un pedido">Pedir por WhatsApp</a>
       <a href="#menu" class="btn btn-outline">Ver menú</a>
     </div>
   </div>
@@ -101,7 +101,7 @@ footer a{color:var(--brand)}
     <button class="menu-cat">Bebidas</button>
     <button class="menu-cat">Postres</button>
   </div>
-  <div class="menu-grid">
+  <div class="menu-grid" id="menuGrid">
     <div class="menu-item reveal"><div class="menu-img">🥞</div><div class="menu-info"><h3>Hotcakes con fruta</h3><p>3 hotcakes esponjosos con fruta de temporada, miel y mantequilla</p><div class="menu-price">$89</div></div></div>
     <div class="menu-item reveal"><div class="menu-img">🌮</div><div class="menu-info"><h3>Tacos de bistec</h3><p>Orden de 4 tacos con bistec, cebolla, cilantro, salsa verde o roja</p><div class="menu-price">$95</div></div></div>
     <div class="menu-item reveal"><div class="menu-img">🍔</div><div class="menu-info"><h3>Hamburguesa clásica</h3><p>Carne de res 180g, queso americano, lechuga, tomate, papas fritas</p><div class="menu-price">$120</div></div></div>
@@ -111,16 +111,16 @@ footer a{color:var(--brand)}
   </div>
 </section>
 
-<section class="special">
+<section class="special" id="specialSection">
   <div class="special-inner">
     <div>
       <div class="section-tag">Especial de la casa</div>
-      <h2 class="section-title">Comida corrida</h2>
-      <p style="color:var(--gray);line-height:1.8;margin-bottom:16px">Incluye sopa del día, plato fuerte, arroz, frijoles, tortillas, agua del día y postre. ¡Todo casero!</p>
-      <div style="font-size:36px;font-weight:800;color:var(--brand);margin-bottom:20px">$85</div>
-      <a href="https://wa.me/521234567890?text=Hola,%20quiero%20la%20comida%20corrida" class="btn btn-primary">Pedir ahora</a>
+      <h2 class="section-title" data-f="special_title">Comida corrida</h2>
+      <p style="color:var(--gray);line-height:1.8;margin-bottom:16px" data-f="special_desc">Incluye sopa del día, plato fuerte, arroz, frijoles, tortillas, agua del día y postre. ¡Todo casero!</p>
+      <div style="font-size:36px;font-weight:800;color:var(--brand);margin-bottom:20px" data-f="special_price">$85</div>
+      <a href="https://wa.me/521234567890?text=Hola,%20quiero%20la%20comida%20corrida" class="btn btn-primary wa-link" data-wa-msg="Hola, quiero la comida corrida">Pedir ahora</a>
     </div>
-    <div class="special-img">🍲</div>
+    <div class="special-img" data-f="special_icon">🍲</div>
   </div>
 </section>
 
@@ -131,7 +131,7 @@ footer a{color:var(--brand)}
       <h2 class="section-title" style="color:#fff">Te esperamos</h2>
       <p style="color:#a8a29e">Servicio en restaurante y para llevar. Pedidos por WhatsApp.</p>
     </div>
-    <div>
+    <div id="scheduleRows">
       <div class="schedule-row"><span>Lunes a Viernes</span><span>8:00 – 21:00</span></div>
       <div class="schedule-row"><span>Sábado</span><span>8:00 – 22:00</span></div>
       <div class="schedule-row"><span>Domingo</span><span>9:00 – 17:00</span></div>
@@ -145,27 +145,75 @@ footer a{color:var(--brand)}
       <div class="section-tag">Visítanos</div>
       <h2 class="section-title">Ubicación</h2>
       <p style="color:var(--gray);line-height:1.8;margin-bottom:20px">
-        📍 Calle Ejemplo #789, Col. Centro<br>Ciudad, Estado, CP 01234<br><br>
-        📞 55 1234 5678<br>📧 contacto@ejemplo.com
+        📍 <span data-f="address">Calle Ejemplo #789, Col. Centro, Ciudad, Estado, CP 01234</span><br><br>
+        📞 <span data-f="phone_display">55 1234 5678</span><br>📧 <span data-f="email">contacto@ejemplo.com</span>
       </p>
-      <a href="https://wa.me/521234567890?text=Hola,%20quiero%20hacer%20una%20reservación" class="btn btn-primary" id="contacto">Reservar mesa</a>
+      <a href="https://wa.me/521234567890?text=Hola,%20quiero%20hacer%20una%20reservación" class="btn btn-primary wa-link" data-wa-msg="Hola, quiero hacer una reservación" id="contacto">Reservar mesa</a>
     </div>
     <div class="map-placeholder">📍 Mapa de Google aquí</div>
   </div>
 </section>
 
-<a class="wa-float" href="https://wa.me/521234567890" target="_blank">
+<a class="wa-float wa-link" data-wa-msg="Hola" href="https://wa.me/521234567890" target="_blank">
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/><path d="M12 2a10 10 0 00-8.493 15.262L2 22l4.875-1.476A10 10 0 1012 2z"/></svg>
 </a>
 
 <footer>
-  <p>© 2026 Nombre del Restaurante · Todos los derechos reservados</p>
+  <p>© 2026 <span data-f="business_name">Nombre del Restaurante</span> · Todos los derechos reservados</p>
   <p style="margin-top:8px">Sitio web por <a href="https://aaron1145563.github.io/trazo-web-landing/" target="_blank">Trazo Web Studio</a></p>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// --- Carga de contenido dinamico por cliente (Trazo Web) ---
+const SUPABASE_URL='https://rqjsvehqdbgfzjsoqeto.supabase.co';
+const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJxanN2ZWhxZGJnZnpqc29xZXRvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIxNzkzMDMsImV4cCI6MjA5Nzc1NTMwM30.C4S3QuCCo3-X2SSscBBbkL2Y0b9NjlyWE2ErbhZdrRg';
+
+function waLink(el,phone){
+  const msg=el.getAttribute('data-wa-msg')||'Hola';
+  el.href='https://wa.me/'+phone+'?text='+encodeURIComponent(msg);
+}
+
+function applyContent(content){
+  document.querySelectorAll('[data-f]').forEach(el=>{
+    const key=el.getAttribute('data-f');
+    if(content[key]!==undefined) el.textContent=content[key];
+  });
+  document.querySelectorAll('[data-f-html]').forEach(el=>{
+    const key=el.getAttribute('data-f-html');
+    if(content[key]!==undefined) el.innerHTML=content[key];
+  });
+  if(content.whatsapp){
+    document.querySelectorAll('.wa-link').forEach(el=>waLink(el,content.whatsapp));
+  }
+  if(Array.isArray(content.hours) && content.hours.length){
+    const box=document.getElementById('scheduleRows');
+    box.innerHTML=content.hours.map(h=>`<div class="schedule-row"><span>${h.label}</span><span>${h.value}</span></div>`).join('');
+  }
+  if(Array.isArray(content.items) && content.items.length){
+    const grid=document.getElementById('menuGrid');
+    grid.innerHTML=content.items.map(it=>`<div class="menu-item reveal visible"><div class="menu-img">${it.icon||'🍽'}</div><div class="menu-info"><h3>${it.name}</h3><p>${it.desc||''}</p><div class="menu-price">${it.price||''}</div></div></div>`).join('');
+  }
+  if(content.special_hidden){
+    const sp=document.getElementById('specialSection');
+    if(sp) sp.style.display='none';
+  }
+}
+
+(function loadClientContent(){
+  const params=new URLSearchParams(window.location.search);
+  const clientId=params.get('c');
+  if(!clientId) return; // sin id de cliente, se queda el contenido de muestra
+  const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+  sb.from('site_content').select('content').eq('client_id',clientId).maybeSingle()
+    .then(({data,error})=>{
+      if(error||!data||!data.content) return;
+      applyContent(data.content);
+    });
+})();
 </script>
 </body>
 </html>
